@@ -17,8 +17,8 @@ jobs:
         uses: anthropics/claude-code-action/agent-approval-check@1d6de8cb0c237e7c15e9e1bdf973826ebae490cc
         with:
           required_approvals: "2"
-          # Agent identity for this PoC: a real separate GitHub account,
+          # Agent identity for this PoC: a real separate GitHub account (adhamkali1),
           # onboarded exactly the way the documented agent_logins input works
           # for bot identities (e.g. the default claude[bot],claude-code[bot]).
-          agent_logins: adhamelnagar312
+          agent_logins: adhamelnagar312-png
           agent_emails: noreply@anthropic.com
