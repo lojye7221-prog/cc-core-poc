@@ -1,0 +1,24 @@
+name: agent-approval-check
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+  issue_comment:
+    types: [created]
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+jobs:
+  check:
+    if: github.event_name != 'issue_comment' || github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Agent approval check (pinned to audited commit 1d6de8c)
+        uses: anthropics/claude-code-action/agent-approval-check@1d6de8cb0c237e7c15e9e1bdf973826ebae490cc
+        with:
+          required_approvals: "2"
+          # Agent identity for this PoC: a real separate GitHub account,
+          # onboarded exactly the way the documented agent_logins input works
+          # for bot identities (e.g. the default claude[bot],claude-code[bot]).
+          agent_logins: adhamelnagar312
+          agent_emails: noreply@anthropic.com
